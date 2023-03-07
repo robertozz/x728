@@ -75,7 +75,7 @@ echo "X728 Shutting down..."
 echo "0" > /sys/class/gpio/gpio$BUTTON/value
 ' > /usr/local/bin/x728softsd.sh
 sudo chmod +x /usr/local/bin/x728softsd.sh
-sudo echo "alias x728off='sudo x728softsd.sh'" >> /home/pi/.bashrc
+sudo echo "alias x728off='sudo x728softsd.sh'" >> ~/x728/.bashrc
 
 #X728 Battery voltage & precentage reading
 #!/bin/bash
@@ -137,8 +137,8 @@ while True:
         GPIO.output(GPIO_PORT, GPIO.LOW)
 
  time.sleep(2)
-' >> /home/pi/x728bat.py
-#sudo chmod +x /home/pi/x728bat.py
+' >> ~/x728/x728bat.py
+#sudo chmod +x ~/x728/x728bat.py
 
 #X728 AC Power loss / power adapter failture detection
 #!/bin/bash
@@ -166,8 +166,8 @@ while True:
         #GPIO.output(BUZZER_PIN, 0)
         #time.sleep(0.1)
     time.sleep(1)
-' > /home/pi/x728pld.py
-#sudo chmod +x /home/pi/x728pld.py
+' > ~/x728/x728pld.py
+#sudo chmod +x ~/x728/x728pld.py
 
 # x728 Test Auto shutdown when AC power loss or power adapter failure
 echo '#!/usr/bin/env python
@@ -195,4 +195,4 @@ def my_callback(channel):
 
 GPIO.add_event_detect(6, GPIO.BOTH, callback=my_callback)
 input("Testing Started")
-' > /home/pi/x728plsd.py
+' > ~/x728/x728plsd.py
